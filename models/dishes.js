@@ -12,9 +12,11 @@ const dishSchema = new Schema(
         type: String,
         required: true
     }},
-       { timestamps: true, }
+    {
+        timestamps: true,
+    }
 );
 
 var Dishes = mongoose.model('Dish', dishSchema);
 
-module.export = Dishes;
+module.exports = Dishes;

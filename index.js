@@ -5,7 +5,7 @@ const url = 'mongodb://localhost:27017/nodeExpressServer';
 
 const connect = mongoose.connect(url);
 
-connect.then((db) => {
+connect.then(() => {
     console.log('Connected correctly to server');
 
     var newDish = Dishes({
@@ -16,7 +16,7 @@ connect.then((db) => {
     newDish.save().then((dish) => {
         console.log(dish);
 
-        Dishes.find({}).exec();
+        return Dishes.find({});
     }).then((dishes) => {
         console.log(dishes);
 
@@ -25,5 +25,5 @@ connect.then((db) => {
         return mongoose.connection.close();
     }).catch((err) => {
         console.log(err);
-    })
-})
+    });
+});
